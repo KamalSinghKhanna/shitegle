@@ -16,12 +16,8 @@ var corsOptions = {
 app.use(cors(corsOptions));
 
 // Server public files (client code)
-app.get('/client1', function(req, res) {
-  res.sendFile(path.join(__dirname, '/public/client1.html'));
-});
-
-app.get('/client2', function(req, res) {
-  res.sendFile(path.join(__dirname, '/public/client2.html'));
+app.get('/client', function(req, res) {
+  res.sendFile(path.join(__dirname, '/public/client.html'));
 });
 
 app.get('/ping', function (req, res) {

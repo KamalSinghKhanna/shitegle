@@ -13,15 +13,15 @@
     <script>
       console.log("Setting up PeerJS");
 
-      var peer = new Peer("client-2", {
+      var peer = new Peer({
           host: '127.0.0.1',
           port: 4008,
           path: '/peerjs',
           debug: 3,
       });
 
-      async function shit() {
-        var response = await fetch('http://127.0.0.1:3000/getrandom/' + 'client-2');
+      async function shit(peer) {
+        var response = await fetch('http://127.0.0.1:3000/getrandom/' + peer.id);
         id = await response.json();
         id = id.id;
         console.log("DEBUG", id);
@@ -62,7 +62,11 @@
 
       }
 
-      shit();
+      setTimeout(function() {
+        // This is really bad, dont do this
+        console.log("holy fuck i need to sleep");
+        shit(peer);
+      }, 1000);
     </script>
   </body>
 </html>
